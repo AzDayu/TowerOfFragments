@@ -10,7 +10,14 @@ namespace TowerOfFragments
     {
         static void Main(string[] args)
         {
+            GameUtil.LoadFullData();
 
+            var myHero = GameDataManager.Instance.GetItem("Job_02");
+
+            if (myHero != null)
+            {
+                Console.WriteLine($"로드된 캐릭터 이름: {myHero.Name}");
+            }
 
         }
     }
