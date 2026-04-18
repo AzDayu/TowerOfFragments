@@ -1,0 +1,198 @@
+[
+  {
+    "Id": "Weapon_01",
+    "Name": "검",
+    "BaseDamage": 10,
+    "Durability": 10,
+    "Description": "기본적인 검이다."
+  },
+  {
+    "Id": "Weapon_02",
+    "Name": "활",
+    "BaseDamage": 5,
+    "Durability": 10,
+    "Description": "기본적인 활이다."
+  },
+  {
+    "Id": "Weapon_03",
+    "Name": "지팡이",
+    "BaseDamage": 5,
+    "Durability": 10,
+    "Description": "기본적인 지팡이이다."
+  },
+  {
+    "Id": "Weapon_04",
+    "Name": "창",
+    "BaseDamage": 10,
+    "Durability": 10,
+    "Description": "기본적인 창이다."
+  },
+  {
+    "Id": "Weapon_05",
+    "Name": "강철검",
+    "BaseDamage": 15,
+    "Durability": 15,
+    "Description": "제법 무겁고 단단한 강철제 검이다."
+  },
+  {
+    "Id": "Weapon_06",
+    "Name": "롱보우",
+    "BaseDamage": 12,
+    "Durability": 8,
+    "Description": "사거리가 길고 강력한 위력의 장활이다."
+  },
+  {
+    "Id": "Weapon_07",
+    "Name": "마나 지팡이",
+    "BaseDamage": 8,
+    "Durability": 12,
+    "Description": "마력 전도율이 높은 나무로 만든 지팡이이다."
+  },
+  {
+    "Id": "Weapon_08",
+    "Name": "기사 창",
+    "BaseDamage": 18,
+    "Durability": 10,
+    "Description": "기사들이 돌격용으로 사용하는 길고 날카로운 창이다."
+  },
+  {
+    "Id": "Weapon_09",
+    "Name": "단검",
+    "BaseDamage": 7,
+    "Durability": 20,
+    "Description": "작지만 가볍고 내구도가 높은 보조용 무기이다."
+  },
+  {
+    "Id": "Weapon_10",
+    "Name": "배틀 액스",
+    "BaseDamage": 22,
+    "Durability": 12,
+    "Description": "강력한 파괴력을 지녔지만 다루기 힘든 도끼이다."
+  },
+  {
+    "Id": "Weapon_11",
+    "Name": "클레이모어",
+    "BaseDamage": 25,
+    "Durability": 15,
+    "Description": "양손으로 사용해야 하는 거대한 대검이다."
+  },
+  {
+    "Id": "Weapon_12",
+    "Name": "마법서",
+    "BaseDamage": 10,
+    "Durability": 5,
+    "Description": "고대 주문이 적혀 있어 마력을 증폭시키는 책이다."
+  },
+  {
+    "Id": "Weapon_13",
+    "Name": "레이피어",
+    "BaseDamage": 13,
+    "Durability": 12,
+    "Description": "찌르기에 특화된 가늘고 날카로운 검이다."
+  },
+  {
+    "Id": "Weapon_14",
+    "Name": "복합궁",
+    "BaseDamage": 14,
+    "Durability": 10,
+    "Description": "여러 재료를 덧대어 탄성을 극대화한 활이다."
+  },
+  {
+    "Id": "Weapon_15",
+    "Name": "크리스탈 지팡이",
+    "BaseDamage": 12,
+    "Durability": 15,
+    "Description": "투명한 수정이 박혀 있어 마력을 정교하게 조절한다."
+  },
+  {
+    "Id": "Weapon_16",
+    "Name": "할버드",
+    "BaseDamage": 20,
+    "Durability": 14,
+    "Description": "도끼와 창의 장점을 결합한 다목적 폴암이다."
+  },
+  {
+    "Id": "Weapon_17",
+    "Name": "메이스",
+    "BaseDamage": 16,
+    "Durability": 25,
+    "Description": "단단한 철퇴로, 내구도가 매우 높아 잘 부서지지 않는다."
+  },
+  {
+    "Id": "Weapon_18",
+    "Name": "샴쉬르",
+    "BaseDamage": 14,
+    "Durability": 12,
+    "Description": "곡선이 아름다운 도검으로 베기 공격에 최적화되어 있다."
+  },
+  {
+    "Id": "Weapon_19",
+    "Name": "워해머",
+    "BaseDamage": 24,
+    "Durability": 18,
+    "Description": "거대한 망치이다. 방어구 위로도 큰 충격을 준다."
+  },
+  {
+    "Id": "Weapon_20",
+    "Name": "사슬 채찍",
+    "BaseDamage": 11,
+    "Durability": 15,
+    "Description": "사슬로 연결된 채찍으로 변칙적인 공격이 가능하다."
+  },
+  {
+    "Id": "Weapon_21",
+    "Name": "미스릴 검",
+    "BaseDamage": 28,
+    "Durability": 30,
+    "Description": "환상의 금속 미스릴로 제련되어 가볍고 매우 강력하다."
+  },
+  {
+    "Id": "Weapon_22",
+    "Name": "대궁",
+    "BaseDamage": 25,
+    "Durability": 8,
+    "Description": "거대한 화살을 쏘는 활로, 위력은 엄청나지만 내구도가 낮다."
+  },
+  {
+    "Id": "Weapon_23",
+    "Name": "현자의 지팡이",
+    "BaseDamage": 20,
+    "Durability": 20,
+    "Description": "대마법사들이 사용하던 고결한 마력이 깃든 지팡이이다."
+  },
+  {
+    "Id": "Weapon_24",
+    "Name": "삼지창",
+    "BaseDamage": 22,
+    "Durability": 16,
+    "Description": "세 갈래 날이 달린 창으로 적을 제압하기 용이하다."
+  },
+  {
+    "Id": "Weapon_25",
+    "Name": "카타나",
+    "BaseDamage": 19,
+    "Durability": 10,
+    "Description": "매우 날카롭지만 칼날이 얇아 관리가 필요한 도검이다."
+  },
+  {
+    "Id": "Weapon_26",
+    "Name": "모닝스타",
+    "BaseDamage": 18,
+    "Durability": 22,
+    "Description": "가시 돋친 철구로 적에게 치명적인 상처를 입힌다."
+  },
+  {
+    "Id": "Weapon_27",
+    "Name": "흑요석 단검",
+    "BaseDamage": 15,
+    "Durability": 5,
+    "Description": "극도의 예리함을 가졌으나 유리처럼 쉽게 깨질 수 있다."
+  },
+  {
+    "Id": "Weapon_28",
+    "Name": "그레이트 소드",
+    "BaseDamage": 32,
+    "Durability": 20,
+    "Description": "전장을 휩쓰는 거대한 대검으로 압도적인 위력을 자랑한다."
+  }
+]

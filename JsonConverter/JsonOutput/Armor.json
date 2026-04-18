@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "Armor_01",
+    "Name": "천 옷",
+    "Defense": 2,
+    "Durability": 10,
+    "Description": "가장 기본적인 형태의 가벼운 옷이다."
+  },
+  {
+    "Id": "Armor_02",
+    "Name": "낡은 가죽 갑옷",
+    "Defense": 4,
+    "Durability": 12,
+    "Description": "세월의 흔적이 느껴지는 질긴 가죽 갑옷이다."
+  },
+  {
+    "Id": "Armor_03",
+    "Name": "나무 갑옷",
+    "Defense": 5,
+    "Durability": 8,
+    "Description": "단단한 나무 판자를 덧대어 만든 임시 방어구이다."
+  },
+  {
+    "Id": "Armor_04",
+    "Name": "누비 갑옷",
+    "Defense": 6,
+    "Durability": 15,
+    "Description": "천 사이에 솜을 넣어 충격을 완화하도록 만든 옷이다."
+  },
+  {
+    "Id": "Armor_05",
+    "Name": "경량 사슬 갑옷",
+    "Defense": 8,
+    "Durability": 14,
+    "Description": "얇은 쇠고리로 엮어 무게를 줄인 사슬 갑옷이다."
+  },
+  {
+    "Id": "Armor_06",
+    "Name": "철 흉갑",
+    "Defense": 11,
+    "Durability": 18,
+    "Description": "가슴과 주요 장기를 보호하는 철제 방어구이다."
+  },
+  {
+    "Id": "Armor_07",
+    "Name": "강화 가죽 갑옷",
+    "Defense": 9,
+    "Durability": 20,
+    "Description": "두꺼운 가죽을 여러 겹 겹쳐 내구성을 높였다."
+  },
+  {
+    "Id": "Armor_08",
+    "Name": "비늘 갑옷",
+    "Defense": 13,
+    "Durability": 15,
+    "Description": "금속 편을 물고기 비늘처럼 겹쳐 만든 갑옷이다."
+  },
+  {
+    "Id": "Armor_09",
+    "Name": "기사단의 갑옷",
+    "Defense": 15,
+    "Durability": 22,
+    "Description": "정식 기사들이 착용하는 표준적인 전신 갑옷이다."
+  },
+  {
+    "Id": "Armor_10",
+    "Name": "판금 갑옷",
+    "Defense": 19,
+    "Durability": 25,
+    "Description": "전신을 금속 판으로 감싸는 강력한 중갑이다."
+  },
+  {
+    "Id": "Armor_11",
+    "Name": "도적의 망토",
+    "Defense": 5,
+    "Durability": 30,
+    "Description": "방어력은 낮지만 매우 질기고 활동성이 뛰어난 망토이다."
+  },
+  {
+    "Id": "Armor_12",
+    "Name": "마법 무늬 로브",
+    "Defense": 7,
+    "Durability": 12,
+    "Description": "신비한 문양이 새겨져 마력을 보호하는 로브이다."
+  },
+  {
+    "Id": "Armor_13",
+    "Name": "미스릴 흉갑",
+    "Defense": 22,
+    "Durability": 35,
+    "Description": "환상의 금속으로 만들어 가볍고 방어력이 압도적이다."
+  },
+  {
+    "Id": "Armor_14",
+    "Name": "용비늘 갑옷",
+    "Defense": 25,
+    "Durability": 40,
+    "Description": "용의 비늘로 제작되어 웬만한 공격은 모두 튕겨낸다."
+  },
+  {
+    "Id": "Armor_15",
+    "Name": "가시 갑옷",
+    "Defense": 14,
+    "Durability": 18,
+    "Description": "표면에 가시가 돋아 있어 접근하는 적에게 위협적이다."
+  },
+  {
+    "Id": "Armor_16",
+    "Name": "가디언 슈트",
+    "Defense": 30,
+    "Durability": 50,
+    "Description": "고대 기술로 만들어진, 절대 뚫리지 않을 것 같은 갑옷이다."
+  }
+]

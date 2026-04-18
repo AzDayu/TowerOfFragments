@@ -1,0 +1,254 @@
+[
+  {
+    "Id": "Mat_01",
+    "Name": "철광석",
+    "ATK": 2,
+    "DEF": 0,
+    "DUR": 5,
+    "SpecialEffect": "-",
+    "Description": "가장 흔하게 발견되는 단단한 광석입니다."
+  },
+  {
+    "Id": "Mat_02",
+    "Name": "가죽 조각",
+    "ATK": 0,
+    "DEF": 1,
+    "DUR": 3,
+    "SpecialEffect": "-",
+    "Description": "장비를 보강하는 데 쓰이는 질긴 가죽입니다."
+  },
+  {
+    "Id": "Mat_03",
+    "Name": "날카로운 이빨",
+    "ATK": 3,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "-",
+    "Description": "공격적인 성향을 부여하는 짐승의 이빨입니다."
+  },
+  {
+    "Id": "Mat_04",
+    "Name": "단단한 나무껍질",
+    "ATK": 0,
+    "DEF": 2,
+    "DUR": 4,
+    "SpecialEffect": "-",
+    "Description": "가볍고 튼튼하여 방어구 보강에 좋습니다."
+  },
+  {
+    "Id": "Mat_05",
+    "Name": "숫돌 조각",
+    "ATK": 1,
+    "DEF": 0,
+    "DUR": 10,
+    "SpecialEffect": "-",
+    "Description": "무기의 날을 세우고 내구성을 높여줍니다."
+  },
+  {
+    "Id": "Mat_06",
+    "Name": "화염 가루",
+    "ATK": 4,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "화염속성",
+    "Description": "열기를 뿜어내어 공격에 화력을 더합니다."
+  },
+  {
+    "Id": "Mat_07",
+    "Name": "냉기 파편",
+    "ATK": 4,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "냉기속성",
+    "Description": "서늘한 기운으로 적의 움직임을 둔화시킵니다."
+  },
+  {
+    "Id": "Mat_08",
+    "Name": "전격의 핵",
+    "ATK": 4,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "전격속성",
+    "Description": "찌릿한 전기를 방출하여 강력한 피해를 줍니다."
+  },
+  {
+    "Id": "Mat_09",
+    "Name": "끈적한 점액",
+    "ATK": 0,
+    "DEF": 0,
+    "DUR": 15,
+    "SpecialEffect": "-",
+    "Description": "장비의 결속력을 높여 잘 부서지지 않게 합니다."
+  },
+  {
+    "Id": "Mat_10",
+    "Name": "청동 원석",
+    "ATK": 3,
+    "DEF": 2,
+    "DUR": 5,
+    "SpecialEffect": "-",
+    "Description": "합금의 기초가 되는 묵직한 원석입니다."
+  },
+  {
+    "Id": "Mat_11",
+    "Name": "빛나는 깃털",
+    "ATK": 0,
+    "DEF": 0,
+    "DUR": 2,
+    "SpecialEffect": "민첩성증가",
+    "Description": "장비를 가볍게 만들어 활동성을 높여줍니다."
+  },
+  {
+    "Id": "Mat_12",
+    "Name": "독니 파편",
+    "ATK": 5,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "독속성",
+    "Description": "지속적인 피해를 입히는 독소를 주입합니다."
+  },
+  {
+    "Id": "Mat_13",
+    "Name": "강철 주괴",
+    "ATK": 6,
+    "DEF": 4,
+    "DUR": 10,
+    "SpecialEffect": "-",
+    "Description": "제련된 강철로, 장비의 격을 높여줍니다."
+  },
+  {
+    "Id": "Mat_14",
+    "Name": "마력 결정",
+    "ATK": 5,
+    "DEF": 5,
+    "DUR": 0,
+    "SpecialEffect": "마법위력 강화",
+    "Description": "순수한 마력이 깃들어 지팡이나 로브에 좋습니다."
+  },
+  {
+    "Id": "Mat_15",
+    "Name": "흑요석 조각",
+    "ATK": 8,
+    "DEF": 0,
+    "DUR": -5,
+    "SpecialEffect": "-",
+    "Description": "극도로 날카롭지만 내구도가 감소합니다."
+  },
+  {
+    "Id": "Mat_16",
+    "Name": "거인석",
+    "ATK": 10,
+    "DEF": 0,
+    "DUR": 5,
+    "SpecialEffect": "-",
+    "Description": "압도적인 무게감으로 공격력을 크게 높입니다."
+  },
+  {
+    "Id": "Mat_17",
+    "Name": "미스릴 가루",
+    "ATK": 7,
+    "DEF": 7,
+    "DUR": 15,
+    "SpecialEffect": "-",
+    "Description": "매우 가볍고 단단한 환상의 금속 가루입니다."
+  },
+  {
+    "Id": "Mat_18",
+    "Name": "용의 비늘",
+    "ATK": 0,
+    "DEF": 12,
+    "DUR": 20,
+    "SpecialEffect": "화염 저항",
+    "Description": "어떤 충격도 흡수할 것 같은 용의 비늘입니다."
+  },
+  {
+    "Id": "Mat_19",
+    "Name": "고대 회로",
+    "ATK": 5,
+    "DEF": 5,
+    "DUR": 5,
+    "SpecialEffect": "추가 타격",
+    "Description": "잃어버린 기술이 담긴 신비로운 부품입니다."
+  },
+  {
+    "Id": "Mat_20",
+    "Name": "정령의 눈물",
+    "ATK": 10,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "모든 속성강화",
+    "Description": "정령의 힘이 깃들어 마법적인 위력을 극대화합니다."
+  },
+  {
+    "Id": "Mat_21",
+    "Name": "아다만티움 조각",
+    "ATK": 15,
+    "DEF": 15,
+    "DUR": 30,
+    "SpecialEffect": "-",
+    "Description": "현존하는 물질 중 가장 단단한 파편입니다."
+  },
+  {
+    "Id": "Mat_22",
+    "Name": "암흑 물질",
+    "ATK": 20,
+    "DEF": 0,
+    "DUR": -10,
+    "SpecialEffect": "흡혈",
+    "Description": "적의 생명력을 흡수하는 불길한 물질입니다."
+  },
+  {
+    "Id": "Mat_23",
+    "Name": "성스러운 유골",
+    "ATK": 0,
+    "DEF": 18,
+    "DUR": 20,
+    "SpecialEffect": "신성속성",
+    "Description": "사악한 기운을 물리치는 성스러운 힘이 깃듭니다."
+  },
+  {
+    "Id": "Mat_24",
+    "Name": "불사조의 깃털",
+    "ATK": 0,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "부활/복구",
+    "Description": "장비가 파괴될 때 한 번 막아줍니다."
+  },
+  {
+    "Id": "Mat_25",
+    "Name": "중력석",
+    "ATK": 25,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "충격파",
+    "Description": "무기에 무게를 더해 적을 밀쳐냅니다."
+  },
+  {
+    "Id": "Mat_26",
+    "Name": "시공간의 파편",
+    "ATK": 0,
+    "DEF": 0,
+    "DUR": 0,
+    "SpecialEffect": "행동 횟수+1",
+    "Description": "시간의 흐름을 왜곡하는 기이한 조각입니다."
+  },
+  {
+    "Id": "Mat_27",
+    "Name": "보스 몬스터의 핵",
+    "ATK": 30,
+    "DEF": 30,
+    "DUR": 50,
+    "SpecialEffect": "무작위 특수 효과",
+    "Description": "보스의 힘이 응축된 궁극의 강화 재료입니다."
+  },
+  {
+    "Id": "Mat_28",
+    "Name": "복원자의 정수",
+    "ATK": 50,
+    "DEF": 50,
+    "DUR": 100,
+    "SpecialEffect": "완전 결속",
+    "Description": "모든 파편을 하나로 묶는 전설적인 정수입니다."
+  }
+]
