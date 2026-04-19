@@ -46,4 +46,16 @@ namespace TowerOfFragments
         public string SpecialEffect { get; set; }
         public string Description { get; set; }
     }
+
+    public class MonstersData : IGameData
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public int HP { get; set; }
+        public int ATK { get; set; }
+        public int DEF { get; set; }
+        public int CRI { get; set; }
+        public string Passive { get; set; }
+        public string Description { get; set; }
+    }
 }

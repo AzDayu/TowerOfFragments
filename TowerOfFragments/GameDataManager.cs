@@ -29,14 +29,15 @@ namespace TowerOfFragments
         public Dictionary<string, WeaponData> WeaponDataList { get; private set; }
         public Dictionary<string, ArmorData> ArmorDataList { get; private set; }
         public Dictionary<string, MaterialsData> MaterialsDataList { get; private set; }
+        public Dictionary<string, MonstersData> MonstersDataList { get; private set; }
 
-        // 외부에서 new를 못하게 생성자를 private으로 막습니다.
         private GameDataManager()
         {
             CharacterDataList = new Dictionary<string, CharacterData>();
             WeaponDataList = new Dictionary<string, WeaponData>();
             ArmorDataList = new Dictionary<string, ArmorData>();
             MaterialsDataList = new Dictionary<string, MaterialsData>();
+            MonstersDataList = new Dictionary<string, MonstersData>();
         }
 
         private Dictionary<string, T> LoadData<T>(string jsonPath) where T : IGameData
@@ -56,7 +57,6 @@ namespace TowerOfFragments
                 if (dataList != null)
                 {
                     Console.WriteLine($"{typeof(T).Name} 데이터를 {dataList.Count}개 로드했습니다.");
-                    // Id 속성을 키로 사용하여 딕셔너리로 변환 (인터페이스 활용)
                     return dataList.ToDictionary(item => item.Id);
                 }
             }
@@ -89,7 +89,12 @@ namespace TowerOfFragments
             MaterialsDataList = LoadData<MaterialsData>(jsonPath);
         }
 
-        public CharacterData GetItem(string id)
+        public void LoadMonstersData(string jsonPath)
+        {
+            MonstersDataList = LoadData<MonstersData>(jsonPath);
+        }
+
+        public CharacterData GetCharacterData(string id)
         {
             if (CharacterDataList == null || string.IsNullOrEmpty(id)) return null;
 
@@ -115,6 +120,12 @@ namespace TowerOfFragments
             if (MaterialsDataList == null || string.IsNullOrEmpty(id)) return null;
 
             return MaterialsDataList.TryGetValue(id, out var data) ? data : null;
+        }
+        public MonstersData GetMonstersData(string id)
+        {
+            if (MonstersDataList == null || string.IsNullOrEmpty(id)) return null;
+
+            return MonstersDataList.TryGetValue(id, out var data) ? data : null;
         }
     }
 }
