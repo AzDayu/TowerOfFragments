@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TowerOfFragments
+﻿namespace TowerOfFragments
 {
     public class CharacterData : IGameData
     {
@@ -42,7 +36,7 @@ namespace TowerOfFragments
         public string Name { get; set; }
         public int ATK { get; set; }
         public int DEF { get; set; }
-        public int DUR { get; set; }
+        public int Durability { get; set; }
         public string SpecialEffect { get; set; }
         public string Description { get; set; }
     }

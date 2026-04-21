@@ -12,17 +12,22 @@ namespace TowerOfFragments
         private const int MAX_FLOOR = 10;
         private Random _random = new Random();
 
+        private List<RoomType> _currentRoomOptions = new List<RoomType>();
+
+        public enum RoomType { NormalBattle, EliteBattle, Rest, RandomEvent }
+
         public StageManager(Player player)
         {
             _player = player;
         }
+
         public void StartGame()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("==================================================");
             Console.WriteLine("          파편의 탑에 입장하셨습니다...           ");
-            Console.WriteLine("==================================================\n");
+            Console.WriteLine("==================================================");
             Console.ResetColor();
             Thread.Sleep(1500);
 
@@ -36,11 +41,13 @@ namespace TowerOfFragments
                 if (_currentFloor == MAX_FLOOR)
                 {
                     EnterBossRoom();
-                    break;
                 }
-
-                int choice = ChooseRoom();
-                ProcessRoom(choice);
+                else
+                {
+                    GenerateRoomOptions(); 
+                    int choice = ChooseRoom();
+                    ProcessRoom(choice);
+                }
 
                 if (_player.IsAlive)
                 {
@@ -50,71 +57,99 @@ namespace TowerOfFragments
                 }
             }
 
-            if (_player.IsAlive)
+            if (_player.IsAlive && _currentFloor > MAX_FLOOR)
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("==================================================");
-                Console.WriteLine(" [축하합니다!] 파편의 왕을 쓰러뜨리고 탑을 정복했습니다! ");
-                Console.WriteLine("==================================================");
-                Console.ResetColor();
+                ShowVictoryEnding();
+            }
+        }
+
+        private void GenerateRoomOptions()
+        {
+            _currentRoomOptions.Clear();
+            Array values = Enum.GetValues(typeof(RoomType));
+
+            for (int i = 0; i < 3; i++)
+            {
+                _currentRoomOptions.Add((RoomType)values.GetValue(_random.Next(values.Length)));
             }
         }
 
         private int ChooseRoom()
         {
-            Console.WriteLine("앞에 세 갈래의 문이 있습니다. 어디로 가시겠습니까?\n");
-            Console.WriteLine("1. [전투의 방] 몬스터의 기운이 느껴집니다. (보상 획득 가능)");
-            Console.WriteLine("2. [휴식의 방] 안전해 보입니다. (체력 회복)");
-            Console.WriteLine("3. [미지의 방] 무슨 일이 일어날지 모릅니다. (랜덤 이벤트)\n");
-            Console.Write("선택 (1~3) : ");
+            Console.WriteLine("앞에 세 갈래의 문이 나타났습니다. 어디로 향하시겠습니까?\n");
 
-            string input = Console.ReadLine();
-            if (input == "1" || input == "2" || input == "3")
+            for (int i = 0; i < _currentRoomOptions.Count; i++)
             {
-                return int.Parse(input);
+                string roomName = "";
+                string desc = "";
+
+                switch (_currentRoomOptions[i])
+                {
+                    case RoomType.NormalBattle:
+                        roomName = "[일반 전투]"; desc = "비교적 약한 몬스터의 기운이 느껴집니다."; break;
+                    case RoomType.EliteBattle:
+                        roomName = "[엘리트 전투]"; desc = "강력한 적의 압박감이 전해집니다. (고급 보상)"; break;
+                    case RoomType.Rest:
+                        roomName = "[휴식 공간]"; desc = "잠시 장비를 정비하고 숨을 돌릴 수 있습니다."; break;
+                    case RoomType.RandomEvent:
+                        roomName = "[미지의 방]"; desc = "무엇이 기다릴지 알 수 없는 기묘한 방입니다."; break;
+                }
+                Console.WriteLine($"{i + 1}. {roomName} - {desc}");
             }
-            else
-            {
-                Console.WriteLine("잘못된 입력입니다. 강제로 전투의 방에 입장합니다.");
-                return 1;
-            }
+
+            Console.Write("\n선택 (1~3) : ");
+            if (int.TryParse(Console.ReadLine(), out int choice) && choice >= 1 && choice <= 3)
+                return choice - 1;
+
+            Console.Write("\n잘못 누르셨습니다 강제로 첫 번째 방으로 갑니다.");
+            Thread.Sleep(1000);
+            return 0; 
         }
 
-        private void ProcessRoom(int choice)
+        private void ProcessRoom(int index)
         {
             Console.Clear();
-            switch (choice)
+            RoomType selected = _currentRoomOptions[index];
+
+            switch (selected)
             {
-                case 1:
-                    EnterBattleRoom();
-                    break;
-                case 2:
-                    EnterRestRoom();
-                    break;
-                case 3:
-                    EnterRandomRoom();
-                    break;
+                case RoomType.NormalBattle: EnterBattleRoom(false); break;
+                case RoomType.EliteBattle: EnterBattleRoom(true); break;
+                case RoomType.Rest: EnterRestRoom(); break;
+                case RoomType.RandomEvent: EnterRandomRoom(); break;
             }
         }
 
-        private void EnterBattleRoom()
+        private void EnterBattleRoom(bool isElite)
         {
-            Console.WriteLine("문을 열자 몬스터가 달려듭니다!\n");
+            string battleType = isElite ? "엘리트 전투" : "일반 전투";
+            Console.WriteLine($"[{battleType}] 문을 열자 적이 나타났습니다!\n");
 
-            var normalMonsters = GameDataManager.Instance.MonstersDataList.Values
-                .Where(m => !m.Id.Contains("Boss") && m.Id.Contains("Mon"))
-                .ToList();
+            var allMonsters = GameDataManager.Instance.MonstersDataList.Values.ToList();
+            List<MonstersData> pool = new List<MonstersData>();
 
-            if (normalMonsters.Count == 0)
+            foreach (var m in allMonsters)
             {
-                Console.WriteLine("몬스터 데이터가 없습니다.");
+                if (int.TryParse(m.Id.Replace("Mon_", ""), out int idNum))
+                {
+                    if (isElite)
+                    {
+                        if (idNum >= 17 && idNum <= 27) pool.Add(m);
+                    }
+                    else
+                    {
+                        if (idNum >= 1 && idNum <= 16) pool.Add(m);
+                    }
+                }
+            }
+
+            if (pool.Count == 0)
+            {
+                Console.WriteLine("해당하는 몬스터를 찾을 수 없습니다.");
                 return;
             }
 
-            var randomData = normalMonsters[_random.Next(normalMonsters.Count)];
-            Monster monster = CreateMonsterInstance(randomData);
-
+            Monster monster = CreateMonsterInstance(pool[_random.Next(pool.Count)]);
             BattleManager battle = new BattleManager(_player, monster);
             battle.StartBattle();
         }
@@ -142,34 +177,31 @@ namespace TowerOfFragments
 
         private void EnterRestRoom()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("조용하고 따뜻한 방입니다. 모닥불 곁에서 휴식을 취합니다.");
+            Console.WriteLine("안전한 장소에 도착했습니다. 무엇을 하시겠습니까?");
+            Console.WriteLine("1. 휴식 (HP 회복)");
+            Console.WriteLine("2. 정비 (인벤토리 및 아이템 조합)");
 
-            int healAmount = (int)(_player.MaxHP * 0.3f);
-            _player.CurrentHP = Math.Min(_player.MaxHP, _player.CurrentHP + healAmount);
+            string input = Console.ReadLine();
+            if (input == "1")
+            {
+                int healAmount = (int)(_player.MaxHP * 0.3f);
+                _player.HP = Math.Min(_player.MaxHP, _player.HP + healAmount);
 
-            Console.WriteLine($"체력을 {healAmount}만큼 회복했습니다! (현재 HP: {_player.CurrentHP}/{_player.MaxHP})");
-            Console.ResetColor();
+                Console.WriteLine($"체력을 {healAmount}만큼 회복했습니다! (현재 HP: {_player.HP}/{_player.MaxHP})");
+                Thread.Sleep(1500);
+            }
+            else if (input == "2")
+            {
+                OpenInventory();
+            }
+
+            Console.Clear();
         }
 
         private void EnterRandomRoom()
         {
-            int rand = _random.Next(0, 100);
-            if (rand < 50)
-            {
-                Console.WriteLine("함정이었습니다! 체력을 조금 잃었습니다.");
-                _player.CurrentHP -= 10;
-            }
-            else
-            {
-                Console.WriteLine("바닥에 떨어진 파편을 주웠습니다!");
-                var materials = GameDataManager.Instance.MaterialsDataList.Values.ToList();
-                if (materials.Count > 0)
-                {
-                    var mat = materials[_random.Next(materials.Count)];
-                    _player.MyInventory.AddMaterial(mat);
-                }
-            }
+            _player.HP -= 10;
+            Console.WriteLine($"함정 발동! 현재 체력: {_player.HP}");
         }
 
         private Monster CreateMonsterInstance(MonstersData data)
@@ -191,5 +223,43 @@ namespace TowerOfFragments
                 return new NormalMonster(data);
             }
         }
+
+        private void ShowVictoryEnding()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("==================================================");
+            Console.WriteLine(" [축하합니다!] 파편의 왕을 쓰러뜨리고 탑을 정복했습니다! ");
+            Console.WriteLine("==================================================");
+            Console.WriteLine("\n플레이어 이름: " + _player.Name);
+            Console.WriteLine("최종 도달 층수: " + (_currentFloor - 1) + "층");
+            Console.WriteLine("\n당신의 전설은 파편의 탑에 영원히 기록될 것입니다.");
+            Console.WriteLine("==================================================");
+            Console.ResetColor();
+
+            Console.WriteLine("\n[Enter] 키를 누르면 게임을 종료합니다.");
+            Console.ReadLine();
+        }
+
+        private void OpenInventory()
+        {
+            _player.MyInventory.ShowInventory(
+                _player.Job,
+                _player.EquippedWeapon,
+                 _player.EquippedArmor,
+                (selectedWeapon) => {
+                    _player.EquippedWeapon = selectedWeapon; 
+                },
+                (selectedArmo) => {
+                    _player.EquippedArmor = selectedArmo;
+                },
+                () => {
+                    CombinationManager combo = new CombinationManager();
+                    combo.ShowCombinationMenu(_player.Job, _player.MyInventory);
+                }
+            );
+        }
     }
+
+
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Threading;
 
 namespace TowerOfFragments
 {
@@ -51,44 +48,84 @@ namespace TowerOfFragments
         public List<Armor> Armors { get; private set; } = new List<Armor>();
         public List<MaterialsData> Materials { get; private set; } = new List<MaterialsData>();
 
-        public void AddWeapon(WeaponData data)
+        public void ShowInventory(string jobName, Weapon WeaponEquipped, Armor ArmorEquipped, Action<Weapon> onWeaponEquip, Action<Armor> onArmorEquip, Action onCombine)
         {
-            Weapons.Add(new Weapon(data));
-            Console.WriteLine($"[무기 획득] {data.Name}");
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine($"=== 인벤토리 (직업: {jobName}) ===");
+
+                Console.WriteLine("\n[ 무기 목록 ]");
+                if (Weapons.Count == 0) Console.WriteLine("보유 중인 무기가 없습니다.");
+                else
+                {
+                    for (int i = 0; i < Weapons.Count; i++)
+                    {
+                        string equipStatus = (Weapons[i] == WeaponEquipped) ? "[장착중] " : "";
+                        Console.WriteLine($"{i + 1}. {equipStatus}{Weapons[i].Name} (공격력: {Weapons[i].CurrentDamage})");
+                    }
+                }
+
+                Console.WriteLine("\n[ 방어구 목록 ]");
+                if (Armors.Count == 0) Console.WriteLine("보유 중인 방어구가 없습니다.");
+                else
+                {
+                    for (int i = 0; i < Armors.Count; i++)
+                    {
+                        string equipStatus = (Armors[i] == ArmorEquipped) ? "[장착중] " : "";
+                        Console.WriteLine($"{i + 1}. {equipStatus}{Armors[i].Name} (방어력: {Armors[i].CurrentDefense})");
+                    }
+                }
+
+                Console.WriteLine("\n[ 보유 소재 ]");
+                if (Materials.Count == 0)
+                {
+                    Console.WriteLine("보유 중인 소재가 없습니다.");
+                }
+                else
+                {
+                    foreach (var mat in Materials)
+                    {
+                        Console.WriteLine($"- {mat.Name} (ATK +{mat.ATK})");
+                    }
+                }
+
+                Console.WriteLine("\n1. 무기 장착 2. 방어구 장착 3. 조합하기  0. 나가기");
+                Console.Write("선택: ");
+                string input = Console.ReadLine();
+
+                if (input == "1")
+                {
+                    Console.Write("장착할 무기 번호를 입력하세요: ");
+                    if (int.TryParse(Console.ReadLine(), out int idx) && idx > 0 && idx <= Weapons.Count)
+                    {
+                        WeaponEquipped = Weapons[idx - 1];
+                        onWeaponEquip?.Invoke(WeaponEquipped);
+                        Console.WriteLine($"\n[알림] {WeaponEquipped.Name}(으)로 교체되었습니다.");
+                        Thread.Sleep(500);
+                    }
+                }
+                else if (input == "2")
+                {
+                    Console.Write("장착할 방어구 번호를 입력하세요: ");
+                    if (int.TryParse(Console.ReadLine(), out int idx) && idx > 0 && idx <= Armors.Count)
+                    {
+                        ArmorEquipped = Armors[idx - 1];
+                        onArmorEquip?.Invoke(ArmorEquipped);
+                        Console.WriteLine($"\n[알림] {ArmorEquipped.Name}(으)로 교체되었습니다.");
+                        Thread.Sleep(500);
+                    }
+                }
+                else if (input == "3") { onCombine?.Invoke(); }
+                else if (input == "0") break;
+            }
         }
 
-        public void AddArmor(ArmorData data)
-        {
-            Armors.Add(new Armor(data));
-            Console.WriteLine($"[방어구 획득] {data.Name}");
-        }
+        public void AddWeapon(WeaponData data) => Weapons.Add(new Weapon(data));
 
-        public void AddMaterial(MaterialsData data)
-        {
-            Materials.Add(data);
-            Console.WriteLine($"[소재 획득] {data.Name}");
-        }
+        public void AddArmor(ArmorData data) => Armors.Add(new Armor(data));
 
-        public void ShowInventory()
-        {
-            Console.WriteLine("\n========= [ 인벤토리 ] =========");
+        public void AddMaterial(MaterialsData data){Materials.Add(data);}
 
-            Console.WriteLine("\n[무기]");
-            if (Weapons.Count == 0) Console.WriteLine("- 비어 있음");
-            foreach (var w in Weapons)
-                Console.WriteLine($"- {w.Name} (공격력: {w.CurrentDamage}, 내구도: {w.CurrentDurability})");
-
-            Console.WriteLine("\n[방어구]");
-            if (Armors.Count == 0) Console.WriteLine("- 비어 있음");
-            foreach (var a in Armors)
-                Console.WriteLine($"- {a.Name} (방어력: {a.CurrentDefense}, 내구도: {a.CurrentDurability})");
-
-            Console.WriteLine("\n[소재]");
-            if (Materials.Count == 0) Console.WriteLine("- 비어 있음");
-            foreach (var m in Materials)
-                Console.WriteLine($"- {m.Name} (조합 시 공격력 +{m.ATK})");
-
-            Console.WriteLine("================================");
-        }
     }
 }
