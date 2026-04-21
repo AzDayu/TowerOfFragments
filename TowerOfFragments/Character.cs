@@ -18,12 +18,18 @@ namespace TowerOfFragments
         public string Passive { get; set; }
         public string Description { get; set; }
 
+        public bool IsAlive => CurrentHP > 0;
+        public Weapon EquippedWeapon { get; set; }
+
+        public Inventory MyInventory { get; private set; } = new Inventory();
+
         public Player(string _name, CharacterData data)
         {
             Name = _name;
             Job = data.Name;
             MaxHP = data.HP;
             CurrentHP = data.HP;
+            ATK = data.ATK;
             DEF = data.DEF;
             CRI = data.CRI;
             Passive = data.Passive;
@@ -33,53 +39,41 @@ namespace TowerOfFragments
 
     public class Warrior : Player
     {
-        // 부모에게 데이터를 넘겨주고, 본인은 추가적인 작업만 수행
         public Warrior(string name, CharacterData data) : base(name, data)
         {
-            // 여기에 워리어만 가질 수 있는 초기 아이템 지급 등을 넣을 수 있음
-            Console.WriteLine("워리어 전용 방패가 지급되었습니다.");
+            Console.WriteLine("[시스템] 워리어 전용 낡은 롱소드와 방패가 지급되었습니다.");
         }
     }
 
-
     public class Rogue : Player
     {
-        // 부모에게 데이터를 넘겨주고, 본인은 추가적인 작업만 수행
         public Rogue(string name, CharacterData data) : base(name, data)
         {
-            // 여기에 워리어만 가질 수 있는 초기 아이템 지급 등을 넣을 수 있음
-            Console.WriteLine("Rogue 전용 방패가 지급되었습니다.");
+            Console.WriteLine("[시스템] 로그 전용 날렵한 쌍검이 지급되었습니다.");
         }
     }
 
     public class Mage : Player
     {
-        // 부모에게 데이터를 넘겨주고, 본인은 추가적인 작업만 수행
         public Mage(string name, CharacterData data) : base(name, data)
         {
-            // 여기에 워리어만 가질 수 있는 초기 아이템 지급 등을 넣을 수 있음
-            Console.WriteLine("Mage 전용 방패가 지급되었습니다.");
+            Console.WriteLine("[시스템] 메이지 전용 마력이 깃든 나무 지팡이가 지급되었습니다.");
         }
     }
 
-
-    public class Paladine : Player
+    public class Paladin : Player
     {
-        // 부모에게 데이터를 넘겨주고, 본인은 추가적인 작업만 수행
-        public Paladine(string name, CharacterData data) : base(name, data)
+        public Paladin(string name, CharacterData data) : base(name, data)
         {
-            // 여기에 워리어만 가질 수 있는 초기 아이템 지급 등을 넣을 수 있음
-            Console.WriteLine("Paladine 전용 방패가 지급되었습니다.");
+            Console.WriteLine("[시스템] 팔라딘 전용 성스러운 둔기가 지급되었습니다.");
         }
     }
 
     public class Archer : Player
     {
-        // 부모에게 데이터를 넘겨주고, 본인은 추가적인 작업만 수행
         public Archer(string name, CharacterData data) : base(name, data)
         {
-            // 여기에 워리어만 가질 수 있는 초기 아이템 지급 등을 넣을 수 있음
-            Console.WriteLine("Archer 전용 방패가 지급되었습니다.");
+            Console.WriteLine("[시스템] 아처 전용 튼튼한 사냥활이 지급되었습니다.");
         }
     }
 }

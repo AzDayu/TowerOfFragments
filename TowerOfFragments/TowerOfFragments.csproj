@@ -80,6 +80,8 @@
     <Compile Include="GameData.cs" />
     <Compile Include="GameDataManager.cs" />
     <Compile Include="GameUtil.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StageManager.cs" />

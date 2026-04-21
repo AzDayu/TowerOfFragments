@@ -9,6 +9,8 @@ namespace TowerOfFragments
     public interface IGameData
     {
         string Id { get; }
+        string Name { get; }
+        string Description { get; }
     }
     internal class GameDataManager
     {
